@@ -14,7 +14,10 @@ const taglines = [
     'GrAphIc DeSiGn iS My PaSsIoN',
     'PHP stands for phat hhhnnnggghhh python',
     'You heard right, i am 100% that bitch',
-    'UI tip #123, When in doubt, slap a gradient on it'
+    'UI tip #123, When in doubt, slap a gradient on it',
+    'UI tip #12, Use shadows to convey elevation and to add a spooky twist',
+    'UI tip #1, Use a border radius so kids don\'t cut themselves on your cards',
+    'UI tip #1233, Don\'t support IE, for your own sanity just let it go'
 ]
 
 const lines = [
@@ -31,6 +34,8 @@ const lines = [
     {type: 'generate_tagline'},
     {type: 'input', text: 'ls posts | wc -l'},
     {type: 'output', text: '0'},
+    {type: 'input', text: 'load_all posts'},
+    {type: 'toggle_animation'}
 ]
 
 function getLine(promptText) {
@@ -47,6 +52,7 @@ function simulateOutput(text) {
     const textNode = document.createTextNode(text)
     line.appendChild(textNode)
     document.getElementById('output').appendChild(line)
+    document.getElementById('output').scrollTop = document.getElementById('output').scrollHeight;
 }
 
 async function simulateInput(text) {
@@ -55,7 +61,10 @@ async function simulateInput(text) {
     textNode.id = uuidv4()
     line.appendChild(textNode)
     document.getElementById('output').appendChild(line)
-    const delay = 100;
+    document.getElementById('output').scrollTop = document.getElementById('output').scrollHeight;
+    let delay = 85;
+    if (localStorage.getItem('animation') === 'false')
+        delay = 0;
     let i = 0;
     while (i <= text.length) {
         const fragment = text.substr(0,i)
@@ -69,6 +78,34 @@ async function simulateInput(text) {
     })
 }
 
+function toggleAnimation() {
+    const line = getLine('>')
+    const text = document.createElement('span')
+    text.appendChild(document.createTextNode('Click'))
+    const link = document.createElement('a')
+    link.className = 'highlight'
+    link.style.marginRight = '0rem'
+    link.href = '#'
+    link.innerText = ' Here '
+    if (localStorage.getItem('animation') === 'true') {
+        link.addEventListener('click', () => {
+            localStorage.setItem('animation', false)
+            window.location.reload()
+        })
+        text.appendChild(link)
+        text.appendChild(document.createTextNode('To Disable this animation for future visits'))
+    } else {
+        link.addEventListener('click', () => {
+            localStorage.setItem('animation', true)
+            window.location.reload()
+        })
+        text.appendChild(link)
+        text.appendChild(document.createTextNode('To Enable this animation for future visits'))
+    }
+    line.appendChild(text)
+    document.getElementById('output').appendChild(line)
+}
+
 async function main() {
     for(const line of lines) {
         if (line.type === 'input') {
@@ -79,6 +116,8 @@ async function main() {
             const tagline = taglines[Math.floor(Math.random() * taglines.length)];
             document.getElementById('tagline').innerText = tagline;
             document.getElementById('tagline').classList.remove('hidden')
+        } else if (line.type === 'toggle_animation') {
+            toggleAnimation()
         } else {
             simulateOutput(line.text)
         }
@@ -86,5 +125,7 @@ async function main() {
 }
 
 window.onload = function () {
+    if (localStorage.getItem('animation') === null)
+        localStorage.setItem('animation', 'true')
     main()
 }

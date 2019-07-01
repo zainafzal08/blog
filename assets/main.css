@@ -94,11 +94,11 @@ body {
     border-radius: 10px;
     margin-left: -15px;
 }
+
 .terminal {
-    width: (100% - 15px - 4rem);
-    height: 100%;
-    margin: 0rem 2rem;
-    margin-left: 15px;
+    width: calc(100% - 2rem);
+    height: calc(100% - 4rem);
+    margin: 2rem 1rem;
 }
 .line {
     color: white;
@@ -113,8 +113,8 @@ body {
     margin-right: 1rem;
 }
 .terminal .output {
-    margin-top: 2rem;
-    height: calc(90% - 2rem);
+    width: 100%;
+    height: 100%;
 }
 .terminal .input {
     height: 10%;
@@ -122,4 +122,34 @@ body {
 }
 .hidden {
     opacity: 0;
+}
+
+@media only screen and (max-width: 768px) {
+    .landing {
+        height: 100vh;
+        flex-direction: column-reverse;
+    }
+
+    .landing-title {
+        width: 100%;
+        height: 80%;
+        justify-content: center;
+        margin: 0px;
+    }
+    .sidebar {
+        width: 100%;
+        height: 20%;
+        background: rgb(41, 50, 65, 1);
+        border-radius: 10px;
+        margin: 0px;
+    }
+    .terminal {
+        height: calc(100% - 2rem);
+        margin: 1rem 1rem;
+    }
+    .terminal .output {
+        height: 100%;
+        max-height: 100%;
+        overflow: scroll;
+    }
 }
