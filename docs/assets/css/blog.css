@@ -1,0 +1,222 @@
+/* https://codepen.io/sdthornton/pen/wBZdXq */
+.elevation-1 {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.elevation-2 {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.elevation-3 {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.elevation-4 {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.elevation-5 {
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+body {
+    background: rgba(0,0,0,0.02);
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    --toggle-width: 2rem;
+}
+
+main {
+    width: 60%;
+    min-height: calc(100vh - 200px);
+    font-family: 'Nunito', sans-serif;
+}
+
+h1,h2,h3 {
+    color: #444;
+}
+h4,h5,h6 {
+    color: #777;
+    font-weight: bold;
+}
+p {
+    color: #777;
+}
+li {
+    color: #777;
+}
+blockquote {
+    border-left: .3rem solid #B24592;
+    margin-left: 0px;
+    padding-left: 1rem;
+    background: rgba(241, 95, 121, 0.1);
+    width: calc(100% - 1rem);
+}
+blockquote p {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    color: #777;
+}
+@media only screen and (max-width: 768px) {
+    main {
+        width: calc(100% - 3rem);
+    }
+}
+
+header {
+    width: 100%;
+    height: 14rem;
+    margin-bottom: 2rem;
+    background: linear-gradient(to left, #B24592, #F15F79);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+header>h1 {
+    font-family: 'Railway', sans-serif;
+    font-weight: 200;
+    font-size: 2.5rem;
+    width: 60%;
+    margin: 0rem 20%;
+    margin-bottom: .5rem;
+    color: rgba(255,255,255,0.8);
+}
+
+header>small {
+    font-family: 'Railway', sans-serif;
+    font-weight: 200;
+    width: 60%;
+    margin: 0rem 20%;
+    margin-top: .5rem;
+    color: rgba(255,255,255,0.7);
+}
+
+footer {
+    width: 100%;
+    height: 150px;
+    margin-top: 5rem;
+    border-top: 2px solid #EBEBEB;
+    font-family: 'Railway', sans-serif;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+footer .content {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+footer p {
+    margin-bottom: .4rem;
+    color: #999;
+    font-size: .9rem;
+}
+footer i {
+    color: rgba(241, 95, 121, 0.8);
+}
+a {
+    color: rgba(241, 95, 121, 0.8);
+    font-weight: 400;
+    text-decoration: none;
+}
+
+footer .panel {
+    margin-top: 1rem;
+}
+
+.large-icons i {
+    font-size: 1.5rem;
+    margin-top: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+    footer {
+        margin-top: 3rem;
+        height: 300px;
+    }
+    footer .content {
+        width: calc(100% - 3rem);
+        margin: 0rem 1.5rem;
+        flex-direction: column;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    header>h1 {
+        width: calc(100% - 3rem);
+        margin: 0rem 1.5rem;
+        margin-bottom: .5rem;
+        font-size: 2rem;
+    }
+    header>small {
+        width: calc(100% - 3rem);
+        margin: 0rem 1.5rem;
+        margin-top: .5rem;
+        font-size: 1rem;
+    }
+}
+
+.author {
+    width: 100%;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 2rem;
+}
+
+.author img {
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+}
+.author .img-wrapper {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(-45deg, #B24592, #F15F79);
+}
+.author .meta {
+    margin-left: 1rem;
+}
+.author .meta>p {
+    margin: 0px;
+}
+.author .meta>small {
+    color: #BBB;
+}
+@media only screen and (max-width: 768px) {
+    .meta {
+        width: calc(100% - 3rem - 70px);
+        margin: 0rem 1.5rem;
+    }
+}
+
+.tags {
+    margin-top: 2rem;
+}
+
+.chip {
+    border: 2px solid rgba(255,255,255,0.7);
+    border-radius: 1rem;
+    padding: .2rem .5rem;
+}
+
+.chip:hover {
+    border: 2px solid white;
+    color: white;
+}
+
+.tags a {
+    color: inherit;
+}

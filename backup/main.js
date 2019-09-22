@@ -7,6 +7,12 @@ function uuidv4() {
     });
 }
 
+function wait(s) {
+    return new Promise((resolve) =>{
+        setTimeout(() => resolve(), s)
+    })
+}
+
 const taglines = [
     'They call them commands but my computer treats them more like suggestions',
     'I don\'t tell the computer what to do, it tells me',
@@ -33,9 +39,7 @@ const lines = [
     {type: 'input', text: './gen_tagline > tagline'},
     {type: 'generate_tagline'},
     {type: 'input', text: 'ls posts | wc -l'},
-    {type: 'output', text: '0'},
-    {type: 'input', text: 'load_all posts'},
-    {type: 'toggle_animation'}
+    {type: 'output', text: '0'}
 ]
 
 function getLine(promptText) {
@@ -47,6 +51,7 @@ function getLine(promptText) {
     line.appendChild(prompt)
     return line
 }
+
 function simulateOutput(text) {
     const line = getLine('>')
     const textNode = document.createTextNode(text)
@@ -68,42 +73,10 @@ async function simulateInput(text) {
     let i = 0;
     while (i <= text.length) {
         const fragment = text.substr(0,i)
-        setTimeout(() => {
-            document.getElementById(textNode.id).innerText = fragment
-        }, delay*(i+1))
+        await wait(delay)
+        document.getElementById(textNode.id).innerText = fragment
         i++
     }
-    return new Promise((resolve) =>{
-        setTimeout(() => resolve(), delay*(i+2))
-    })
-}
-
-function toggleAnimation() {
-    const line = getLine('>')
-    const text = document.createElement('span')
-    text.appendChild(document.createTextNode('Click'))
-    const link = document.createElement('a')
-    link.className = 'highlight'
-    link.style.marginRight = '0rem'
-    link.href = '#'
-    link.innerText = ' Here '
-    if (localStorage.getItem('animation') === 'true') {
-        link.addEventListener('click', () => {
-            localStorage.setItem('animation', false)
-            window.location.reload()
-        })
-        text.appendChild(link)
-        text.appendChild(document.createTextNode('To Disable this animation for future visits'))
-    } else {
-        link.addEventListener('click', () => {
-            localStorage.setItem('animation', true)
-            window.location.reload()
-        })
-        text.appendChild(link)
-        text.appendChild(document.createTextNode('To Enable this animation for future visits'))
-    }
-    line.appendChild(text)
-    document.getElementById('output').appendChild(line)
 }
 
 async function main() {
@@ -116,8 +89,6 @@ async function main() {
             const tagline = taglines[Math.floor(Math.random() * taglines.length)];
             document.getElementById('tagline').innerText = tagline;
             document.getElementById('tagline').classList.remove('hidden')
-        } else if (line.type === 'toggle_animation') {
-            toggleAnimation()
         } else {
             simulateOutput(line.text)
         }

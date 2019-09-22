@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>{{ title }}</title>
+	<link href="../assets/css/blog.css" rel="stylesheet" />
+	<link href="../assets/css/highlight.css" rel="stylesheet" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link
+	  href="https://fonts.googleapis.com/css?family=Nunito|Raleway&display=swap"
+	  rel="stylesheet"
+	/>
+	<link href="../assets/icons/css/materialdesignicons.min.css" rel="stylesheet"/>
+  </head>
+  <body>
+	<header>
+	  <h1>{{ title }}</h1>
+	  <small>Posted <span data-timestamp={{posted_time}}>[Loading Posted Time...]</span></small>
+	  <small class="tags">
+		  {% for tag in tags%}
+		  	<a href="/?tag=#{{tag}}"><span class="chip">#{{tag}}</span></a>
+		  {% endfor %}
+	  </small>
+	</header>
+	<main>
+	  {{post | safe}}
+	  <div class="author">
+		<div class="img-wrapper">
+			<img src="../assets/images/zafzal_profile.jpg">
+		</div>
+		<div class="meta">
+			<p>Written by Zain Afzal</p>
+			<small>last updated <span data-timestamp={{update_time}}>[Loading Last Update Time...]</span></small>
+		</div>
+	  </div>
+	</main>
+	<footer>
+		<div class="content">
+			<div class="panel large-icons">
+				<p> Gradients from <a href="https://uigradients.com">uigradients</a></p>
+				<p> Material Shadows from <a href="https://codepen.io/sdthornton/pen/wBZdXq">sdthornton</a></p>
+				<p> <i class="mdi mdi-language-javascript"></i> <i class="mdi mdi-language-html5"></i> <i class="mdi mdi-language-css3"></i></p>
+			</div>
+			<div class="panel">
+				<p> Web Design with <i class="mdi mdi-heart"></i> by Zain Afzal </p>
+				<p> Built August 2019 </p>
+				<p class="large-icons">
+					<a href="https://twitter.com/blockzain"><i class="mdi mdi-twitter"></i></a>
+					<a href="https://github.com/zainafzal08"><i class="mdi mdi-github-circle"></i></a>
+					<a href="mailto:zain.afz@gmail.com"><i class="mdi mdi-email"></i></a>
+				</p>
+			</div>
+		</div>
+	</footer>
+	<script src="../assets/js/moment.js"></script>
+	<script src="../assets/js/blog.js"></script>
+	</body>
+</html>
