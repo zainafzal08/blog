@@ -1,0 +1,43 @@
+---
+import { Icon } from "astro-icon";
+const today = new Date();
+---
+
+<footer>
+	<p>
+		Made with <Icon pack="mdi" name="heart" /> by <a
+			href="https://zainafzal.com"
+			>Zain
+		</a>
+	</p>
+	<p class="small">
+		&copy; {today.getFullYear()} Zain Afzal. All rights reserved.
+	</p>
+</footer>
+<style>
+	footer {
+		padding: 2rem;
+		display: flex;
+		align-items: flex-end;
+		justify-content: center;
+		flex-direction: column;
+		position: relative;
+	}
+
+	footer p {
+		margin: 0;
+		color: var(--text-secondary);
+		padding: 0.1rem 0;
+		font-size: 0.8rem;
+	}
+
+	footer svg {
+		width: 0.8rem;
+		color: var(--accent-color);
+	}
+
+	footer p.small {
+		font-size: 0.8rem;
+		color: var(--text-muted);
+	}
+</style>

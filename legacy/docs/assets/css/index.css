@@ -1,0 +1,211 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background: #FAFAFA;
+    --main-horizontal-padding: 10%;
+    --main-vertical-padding: 0px;
+    --profile-wrapper-size: 134px;
+    --profile-wrapper-border: 6px;
+    --search-width: 40%;
+    --search-height: 2rem;
+    --search-font-size: 1.2rem;
+    --post-icon-size: 1.8rem;
+    --post-title-size: 1.5rem;
+    --post-subtitle-size: .8rem;
+}
+
+.landing {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Nunito', sans-serif;
+}
+
+.landing h1 {
+    color: #444;
+    font-weight: 300;
+    margin: 0px;
+    margin-top: 2rem;
+    text-align: center;
+}
+.landing h4 {
+    color: #777;
+    font-weight: 300;
+    margin: 0px;
+    margin-top: 1rem;
+    text-align: center;
+    padding: 0rem 3rem;
+}
+
+.landing .profile {
+    width: var(--profile-wrapper-size);
+    height: var(--profile-wrapper-size);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(-45deg, #B24592, #F15F79);
+}
+.landing .profile img {
+    width: calc(var(--profile-wrapper-size) - var(--profile-wrapper-border));
+    border-radius: 50%;
+}
+main {
+    width: calc(100% - var(--main-horizontal-padding)*2);
+    padding: var(--main-vertical-padding) var(--main-horizontal-padding);
+}
+.search {
+    width: var(--search-width);
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+#search-help {
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    padding-left: 2rem;
+    margin-top: .5rem;
+    text-align: left;
+    color: #BBB;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.8rem;
+}
+#search-help span {
+    color: #B24592;
+    font-weight: 800;
+}
+
+.search-bar {
+    width: 100%;
+    height: var(--search-height);
+    border-radius: 30px;
+    background: #EBEBEB;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border: 2px solid rgba(0,0,0,0);
+}
+.search-bar:focus-within {
+    border: 2px solid #F15F79;
+}
+
+.search-bar .icon {
+    height: 100%;
+    width: 1rem;
+    margin-left: .7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-bar i {
+    color: #777;
+}
+
+.search input {
+    border: none;
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: var(--search-font-size);
+    margin-top: .2rem;
+    margin-bottom: .2rem;
+    background: none;
+    color: #777;
+}
+
+.search input:focus {
+    outline: none;
+}
+
+.post-summary {
+    width: calc(100% - 2.4rem);
+    padding: .5rem 1.2rem;
+    border-bottom: 2px solid #EBEBEB;
+    display: flex;
+    justify-content: space-between;
+}
+.post-summary .left {
+    width: 85%;
+    margin-right: 5%;
+}
+.post-summary .right {
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.post-summary .right i {
+    font-size: var(--post-icon-size);
+    color: #999;
+}
+.post-summary h1 {
+    margin: 0;
+    background: #B24592;
+    background: -webkit-linear-gradient(to right, #B24592, #F15F79);
+    background: linear-gradient(to right, #B24592, #F15F79);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Nunito', sans-serif;
+    font-size: var(--post-title-size);
+}
+.post-summary .small {
+    font-family: 'Nunito', sans-serif;
+    color: #BBB;
+    font-size: var(--post-subtitle-size);
+    margin-top: 0rem;
+    width: 100%;
+}
+.post-summary .small .tags {
+    color: #B24592;
+    font-weight: 800;
+}
+.post-summary a {
+    text-decoration: none;
+    color: inherit;
+}
+.post-summary .tags a {
+    margin-right: .3rem;
+}
+
+/* lower then 800 px */
+@media (max-width: 900px) {
+    body {
+        --search-width: 60%;
+    }
+}
+
+/* lower then 800 px */
+@media (max-width: 800px) {
+    body {
+        --profile-wrapper-size: 128px;
+        --search-width: 70%;
+        --search-height: 1.5rem;
+        --search-font-size: .8rem;
+        --post-icon-size: 1.4rem;
+        --post-subtitle-size: .65rem;
+        --post-title-size: 1.2rem;
+    }
+    .landing h1 {
+        font-size: 1.2rem;
+    }
+    .landing h4 {
+        font-size: .8rem;
+    }
+    #search-help {
+        font-size: .7rem;
+    }
+    .post-summary .small .tags {
+        display: none;
+    }
+    .post-summary .small [data-sep] {
+        display: none;
+    }
+}

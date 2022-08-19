@@ -1,0 +1,279 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
+import { PostList } from "../components/post-list";
+import { Icon } from "astro-icon";
+
+interface Post {
+  url: string;
+  frontmatter: {
+    title: string;
+    pubDate: string;
+    tags: string[];
+  };
+}
+
+const posts = (await Astro.glob<Post>("./blog/*.{md,mdx}")).sort(
+  (a, b) =>
+    new Date(b.frontmatter.pubDate).valueOf() -
+    new Date(a.frontmatter.pubDate).valueOf()
+);
+---
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <style>
+      main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 20px;
+      }
+
+      main h1 {
+        margin: 0;
+        margin-top: 0.5rem;
+        color: var(--text-primary);
+      }
+
+      main p {
+        color: var(--text-secondary);
+        margin: 0;
+        margin-top: 0.5rem;
+      }
+
+      main post-list {
+        width: 100%;
+        margin-top: 3rem;
+      }
+      main > svg {
+        height: 300px;
+      }
+      main li {
+        list-style-type: none;
+        width: 100%;
+      }
+      main li a {
+        width: 100%;
+        cursor: pointer;
+      }
+      main li a .post {
+        width: 100%;
+        padding: 1rem 0;
+        display: grid;
+        grid-template-columns: auto 64px;
+        grid-template-rows: auto auto;
+        grid-template-areas: "title icon" "subtitle icon";
+        border-bottom: 2px solid var(--seperator-color);
+      }
+      main li a .post .title {
+        color: var(--text-primary);
+        grid-area: title;
+      }
+      main li a .post .subtitle {
+        color: var(--text-secondary);
+        font-size: 0.8rem;
+        grid-area: subtitle;
+      }
+      main li a .post .subtitle span {
+        color: var(--accent-color);
+        font-weight: bold;
+        padding: 0 0.2rem;
+      }
+      main li a .post .subtitle span.muted {
+        color: var(--text-muted);
+        font-weight: normal;
+      }
+      main li a .post .done-icon {
+        width: 100%;
+        height: 100%;
+        place-items: center;
+        grid-area: icon;
+      }
+      main li a {
+        color: rgba(0, 0, 0, 0);
+      }
+      main li a:visited {
+        color: var(--text-secondary);
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="217"
+        height="300"
+        viewBox="0 0 217 300"
+        fill="none"
+      >
+        <path
+          d="M213.234 88.5363C223.51 126.321 212.602 164.58 182.405 189.875C152.051 215.012 102.41 227.185 73.4782 207.107C44.5469 187.029 36.4841 134.542 51.1869 90.5915C65.7316 46.6413 103.2 11.07 137.507 12.0185C171.813 13.1252 203.116 50.5936 213.234 88.5363Z"
+          fill="var(--accent-color)"
+          fill-opacity="0.1"></path>
+        <path
+          d="M39.1886 226.705L44.5177 221.533L58.5775 225.919L48.1996 235.99L39.1886 226.705Z"
+          fill="#CEA47D"></path>
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M50.2278 234.77C49.2717 237.012 48.4144 238.557 47.6561 239.403C46.7338 240.432 45.2346 241.79 43.1583 243.477C42.09 242.472 32.4891 233.441 14.3556 216.384C16.0853 212.913 17.8553 211.826 19.6655 213.123C21.4757 214.419 22.9938 215.48 24.2196 216.306L43.5841 222.226C43.9567 222.34 44.1427 222.754 43.9996 223.15C43.9971 223.157 43.9946 223.163 43.9919 223.17L42.7619 226.313C43.5571 228.496 44.4214 230.026 45.3548 230.904C46.1131 231.618 47.4671 232.26 49.4167 232.832L49.4167 232.832C50.1649 233.052 50.5457 233.874 50.2672 234.668C50.2552 234.702 50.242 234.736 50.2278 234.77Z"
+          fill="#B58456"></path>
+        <path
+          d="M140.156 242.845L133.274 240.054L131.617 225.42L145.018 230.854L140.156 242.845Z"
+          fill="#CEA47D"></path>
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M143.627 229.709C146.061 229.584 147.825 229.675 148.918 229.985C150.248 230.361 152.127 231.112 154.554 232.237C154.12 233.638 150.223 246.229 142.863 270.012C138.985 269.982 137.231 268.869 137.601 266.673C137.971 264.478 138.257 262.648 138.46 261.184L135.275 241.187C135.214 240.802 135.504 240.453 135.922 240.408C135.93 240.407 135.937 240.407 135.944 240.406L139.308 240.131C140.92 238.458 141.915 237.009 142.294 235.785C142.602 234.79 142.584 233.292 142.242 231.289L142.242 231.289C142.111 230.52 142.682 229.817 143.518 229.719C143.554 229.714 143.59 229.711 143.627 229.709Z"
+          fill="#B58456"></path>
+        <path
+          d="M40.4871 218.98C36.324 209.065 98.7539 161.418 130.489 138.835L147.035 158.442L54.9647 236.136C51.8734 234.548 44.6502 228.894 40.4871 218.98Z"
+          fill="#2C5364"></path>
+        <path
+          d="M125.776 244.784C77.3779 213.935 119.095 177.381 146.904 150.592L165.544 155.269C165.544 155.269 170.927 166.723 160.977 180.386C152.494 192.034 131.782 200.537 128.879 210.393C124.243 226.13 137.066 225.559 139.883 225.253C140.058 225.161 140.236 225.135 140.418 225.183C140.418 225.183 140.224 225.216 139.883 225.253C136.699 226.924 134.514 250.353 125.776 244.784Z"
+          fill="#2C5364"></path>
+        <rect
+          x="117.282"
+          y="168.315"
+          width="11.6424"
+          height="87.3179"
+          rx="5.8212"
+          transform="rotate(49.8404 117.282 168.315)"
+          fill="black"
+          fill-opacity="0.07"></rect>
+        <path
+          d="M66.963 42.5257C66.558 47.477 70.4702 51.5283 72.4769 52.935L78.1687 48.1996C78.6749 42.0105 76.4994 42.6668 73.4894 40.5567C72.933 38.7124 71.3851 35.1552 69.6447 35.6802C68.9195 35.899 67.368 37.5744 66.963 42.5257Z"
+          fill="#D8B696"></path>
+        <path
+          d="M152.267 169.161C157.005 167.665 159.278 162.513 159.822 160.123L153.288 156.642C147.366 158.511 148.796 160.278 147.979 163.862C146.482 165.074 143.773 167.851 144.916 169.264C145.393 169.853 147.53 170.656 152.267 169.161Z"
+          fill="#D8B696"></path>
+        <path
+          d="M103.572 93.1166C128.492 106.961 122.8 98.0115 137.951 99.0715C135.403 89.481 127.435 71.1963 115.948 74.7815C99.58 71.3774 90.1764 54.5163 85.0191 46.5953L66.3608 47.0596C71.0801 59.4912 83.6356 82.0407 103.572 93.1166Z"
+          fill="#83C2E2"></path>
+        <path
+          d="M116.672 93.5559C115.344 78.485 139.089 64.0878 147.287 67.9776L158.578 69.2682C165.073 72.497 178.264 82.521 179.074 96.7867C179.883 111.052 167.686 143.04 161.486 157.25L111.164 153.829L116.672 93.5559Z"
+          fill="#92CAE6"></path>
+        <path
+          d="M181.841 111.152C178.863 80.679 175.614 91.3282 166.732 75.9531C159.18 82.5706 146.815 98.2498 157.766 108.026C165.19 125.605 154.954 147.374 150.712 155.846L158.363 164.898C167.227 154.925 184.224 135.53 181.841 111.152Z"
+          fill="#92CAE6"></path>
+        <path
+          d="M161.622 99.0768C163.942 107.13 166.842 126.793 159.884 141.012"
+          stroke="#83C2E2"
+          stroke-width="3"
+          stroke-linecap="round"></path>
+        <mask
+          id="mask0_734_59"
+          style="mask-type:alpha"
+          maskUnits="userSpaceOnUse"
+          x="113"
+          y="66"
+          width="68"
+          height="76"
+        >
+          <path
+            d="M114.762 84.5632C113.12 72.1184 139.425 64.2723 147.721 67.6465L159.064 68.943C165.64 71.7374 179.067 80.2689 180.173 92.0397C181.279 103.81 169.715 129.914 163.795 141.495L113.292 137.638L114.762 84.5632Z"
+            fill="#92CAE6"></path>
+        </mask>
+        <g mask="url(#mask0_734_59)">
+          <ellipse
+            cx="152.184"
+            cy="66.5889"
+            rx="7.23064"
+            ry="8.37232"
+            transform="rotate(6.52058 152.184 66.5889)"
+            fill="#EAEAEA"></ellipse>
+        </g>
+        <path
+          d="M152.626 170.036C150.006 167.508 143.459 160.165 140.184 157.005C140.184 157.005 134.291 167.94 140.905 171.018C147.519 174.096 155.245 172.564 152.626 170.036Z"
+          fill="#325E71"></path>
+        <path
+          d="M146.339 67.4529L147.183 60.0749L160.837 54.5546L159.195 68.9223L146.339 67.4529Z"
+          fill="#CEA47D"></path>
+        <path
+          d="M143.291 63.4947L153.601 68.0666L143.657 70.4797L143.291 63.4947Z"
+          fill="#F7F7F7"></path>
+        <path
+          d="M161.969 65.5622L151.129 67.784L160.019 72.2777L161.969 65.5622Z"
+          fill="#F7F7F7"></path>
+        <path
+          d="M131.558 33.4034C129.899 47.9198 138.41 60.8143 150.614 62.2092C160.739 60.989 170.572 53.9953 172.232 39.4788C173.891 24.9624 166.816 10.8056 153.337 9.26492C139.857 7.72422 133.217 18.8869 131.558 33.4034Z"
+          fill="#D8B696"></path>
+        <path
+          d="M142.912 48.2925C140.19 45.3001 134.097 40.518 132.088 42.4588C133.686 55.2818 140.568 58.7496 150.517 62.185C155.913 64.0482 168.147 55.3903 170.276 46.8237C172.048 39.6907 168.893 45.5165 164.269 45.7541C158.393 43.5503 147.049 52.8403 142.912 48.2925Z"
+          fill="black"
+          fill-opacity="0.04"></path>
+        <path
+          d="M150.031 38.764C146.246 45.0728 148.691 46.0163 150.387 45.6994"
+          stroke="#CEA47D"></path>
+        <path
+          d="M141.164 30.0713L146.101 30.5738"
+          stroke="black"
+          stroke-opacity="0.47"
+          stroke-width="2"
+          stroke-linecap="round"></path>
+        <path
+          d="M161.971 32.4649L157.056 31.787"
+          stroke="black"
+          stroke-opacity="0.47"
+          stroke-width="2"
+          stroke-linecap="round"></path>
+        <path
+          d="M132.218 30.9825C138.948 15.6642 139.024 18.3541 149.783 18.0517C150.345 26.5428 159.873 16.9068 165.285 19.8236C170.082 22.4087 170.546 30.767 171.54 35.477C171.54 35.477 174.489 33.1328 176.823 26.1218C179.156 19.1108 173.141 7.39184 166.928 5.45588C160.714 3.51993 139.843 1.1344 134.162 13.9681C128.482 26.8017 132.218 30.9825 132.218 30.9825Z"
+          fill="black"></path>
+        <path
+          d="M180.031 21.5091C183.475 20.2526 174.173 13.5617 170.179 13.8714L168.397 19.4132C170.557 18.3833 176.034 22.9674 180.031 21.5091Z"
+          fill="black"></path>
+        <path
+          d="M132.326 9.92776C128.757 11.6648 135.959 12.769 140.007 13.1039C148.055 15.3006 164.365 18.4927 165.221 13.6876C166.076 8.88251 151.958 3.48955 144.793 1.3937C149.459 5.24677 157.205 12.7714 150.853 12.0454C142.913 11.1378 136.788 7.75646 132.326 9.92776Z"
+          fill="black"></path>
+        <path
+          d="M149.999 53.3159C152.112 53.8129 156.519 53.908 157.237 50.3128"
+          stroke="black"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
+        <path
+          d="M145.086 35.9789C143.669 34.9725 142.621 34.0867 139.792 35.3739"
+          stroke="black"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
+        <path
+          d="M161.702 38.0558C160.285 37.0494 159.237 36.1636 156.409 37.4508"
+          stroke="black"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
+      </svg>
+
+      <h1>{SITE_TITLE}</h1>
+      <p>{SITE_DESCRIPTION}</p>
+
+      <PostList client:load>
+        {
+          posts.map((item) => (
+            <li class="post-container">
+              <a href={item.url}>
+                <div class="post">
+                  <p class="title">{item.frontmatter.title}</p>
+                  <p class="subtitle">
+                    Published {item.frontmatter.pubDate} /
+                    {item.frontmatter.tags.length > 0 ? (
+                      item.frontmatter.tags.map((t) => <span>#{t}</span>)
+                    ) : (
+                      <span class="muted">No Tags</span>
+                    )}
+                  </p>
+                </div>
+              </a>
+            </li>
+          ))
+        }
+      </PostList>
+    </main>
+    <Footer />
+  </body>
+</html>

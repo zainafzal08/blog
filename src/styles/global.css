@@ -1,0 +1,72 @@
+body {
+	font-family: 'Nunito', sans-serif;
+	margin: auto;
+	padding: 0;
+	max-width: 65ch;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+	--bg-color: rgba(0,0,0,0.03);
+	--text-muted: #999;
+	--text-secondary: #777;
+	--text-primary: #444;
+	--seperator-color: #EBEBEB;
+	--accent-color: #3273dc;
+	--secondary-accent-color: #676bd7;
+	--accent-light-color: #3273dc12;
+	--input-surface: #EBEBEB;
+	--paper-color: white;
+	--shadow-color: rgba(0, 0, 0, 0.06);
+	overflow-x: hidden;
+}
+h1 {
+	font-weight: bold;
+}
+a {
+	color: var(--accent-color);
+	text-decoration: none;
+}
+blockquote {
+	margin: 0;
+	border-left: .4rem solid var(--accent-color);
+	background: var(--accent-light-color);
+	padding: .4rem 0 .4rem 1.5rem;
+}
+blockquote p {
+	margin: 0;
+	padding: 0;
+}
+
+article p {
+	color: var(--text-primary);
+}
+article h1 {
+	font-size: 1.8rem;
+}
+hr {
+	border: none;
+	outline: none;
+	height: 2px;
+	width: 100%;
+	background: var(--seperator-color);
+}
+article img {
+	border-radius: 16px;
+}
+li {
+	color: var(--text-primary);
+}
+article table {
+	border-collapse: collapse;
+}
+article th {
+	padding: .5rem .5rem;
+}
+article td {
+	padding: .2rem .5rem;
+}
+article thead tr {
+	border-bottom: 2px solid var(--seperator-color);
+}
+article table tbody tr:first-of-type td {
+	padding-top: 1rem;
+}

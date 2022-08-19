@@ -1,0 +1,18 @@
+{
+    "people": {
+        "zain": {
+            "name": "Zain Afzal",
+            "profile": "zain_profile.jpg"
+        }
+    },
+    "posts": {
+        "test": {
+            "title": "test",
+            "author": "zain",
+            "posted": "22/09/19 7:25pm",
+            "last_updated": "22/09/19 7:25pm",
+            "tags": ["docker",  "fun", "music", "sex"],
+            "link": "test"
+        }
+    }
+}
