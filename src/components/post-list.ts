@@ -1,11 +1,23 @@
 import { LitElement, html, css } from "lit";
-import { property, query } from "lit/decorators.js";
 
 export class PostList extends LitElement {
-  @property({ type: Array }) tags: string[] = [];
-  @property({ type: String }) query = "";
+  tags: string[];
+  query: string;
 
-  @query(".empty-state") noSearchResultsMessage?: HTMLDivElement;
+  static get properties() {
+    return {
+      tags: { type: Array },
+      query: { type: String },
+    };
+  }
+
+  constructor() {
+    super();
+    this.tags = [];
+    this.query = "";
+  }
+
+  private noSearchResultsMessage?: HTMLDivElement;
 
   static styles = [
     css`
@@ -118,6 +130,11 @@ export class PostList extends LitElement {
     } else {
       this.noSearchResultsMessage!.style.display = "none";
     }
+  }
+
+  firstUpdated() {
+    this.noSearchResultsMessage =
+      this.renderRoot.querySelector(".empty-state")!;
   }
 
   render() {

@@ -1,9 +1,8 @@
-import { LitElement, html, css } from "lit";
-import { query } from "lit/decorators.js";
+import { LitElement, html, css, PropertyValueMap } from "lit";
 
 export class PostActions extends LitElement {
-  @query("#share-btn") shareButton?: HTMLButtonElement;
-  @query("#share-btn-floating") shareButtonFloating?: SVGElement;
+  private shareButton?: HTMLButtonElement;
+  private shareButtonFloating?: SVGElement;
 
   private onScroll = () => void this.handleScroll();
 
@@ -172,6 +171,12 @@ export class PostActions extends LitElement {
     window.removeEventListener("scroll", this.onScroll);
   }
 
+  protected firstUpdated() {
+    this.shareButton = this.renderRoot.querySelector("#share-btn")!;
+    this.shareButtonFloating = this.renderRoot.querySelector(
+      "#share-btn-floating"
+    )!;
+  }
   render() {
     return html`
       <div class="in-place">
