@@ -7,7 +7,7 @@ import customElements from "custom-elements-ssr/astro.js";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://blog.zainafzal.com",
+  site: "blog.zainafzal.com",
   integrations: [mdx(), sitemap(), lit(), customElements()],
   vite: {
     ssr: {
