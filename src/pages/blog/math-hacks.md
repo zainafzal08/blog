@@ -192,7 +192,7 @@ about this in terms of `10s` and `1s`.
 
 $9n$ can be written as $10n-1n$, that is to say that the number of 10s in the
 output of $9n$ will always be $n-1$ as we would compute $10n$ then subtract 1 or
-more from it, bumping it down. This immedietly gives the rationale for why
+more from it, bumping it down. This immediately gives the rationale for why
 picking your nth finger and looking at the number of fingers before it gives
 us the first digit of our answer. We're just doing $n-1$.
 
