@@ -1,9 +1,10 @@
 ---
 layout: "../../layouts/BlogPost.astro"
-title: "Proving Math Hacks"
+title: "Math Hacks"
 description: "Ever wondered why some of the math hacks you see online work? no? oh."
 pubDate: "Aug 18 2022"
 tags: ["math"]
+social: "/math-hacks-social.png"
 ---
 
 # What is a math hack?
@@ -140,7 +141,7 @@ But try $88 \times 6$ and you'll see why this pinterest post did not use 88.
 
 $$
 \begin{aligned}
-&88 \times 6 = 48\\\
+&8 \times 6 = 48\\\
 &4+8=12\\\
 &4, 12, 8\\\
 &4128\\\\
@@ -168,6 +169,78 @@ me as so:
 > you have left on either side of the one that's down? 3 on the left and 6 on
 > the right. 36
 
-Why does it work?
+**Why does it work?**
 
-...WIP
+This one is quite satisfying to look at, $9n$ where $n<10$ has this nice
+property of always consisting of 2 digits that add up to $9$:
+
+| Formula    | Result |
+| ---------- | ------ |
+| $9\times1$ | 9      |
+| $9\times2$ | 18     |
+| $9\times3$ | 27     |
+| $9\times4$ | 36     |
+| $9\times5$ | 45     |
+| $9\times6$ | 54     |
+| $9\times7$ | 63     |
+| $9\times8$ | 74     |
+| $9\times9$ | 81     |
+
+If you know $9(n-1)$ you can get $9n$ pretty quickly by adding one to the first
+digit and subtracting 1 from the second. How come? Well once again lets think
+about this in terms of `10s` and `1s`.
+
+$9n$ can be written as $10n-1n$, that is to say that the number of 10s in the
+output of $9n$ will always be $n-1$ as we would compute $10n$ then subtract 1 or
+more from it, bumping it down. This immedietly gives the rationale for why
+picking your nth finger and looking at the number of fingers before it gives
+us the first digit of our answer. We're just doing $n-1$.
+
+Now the second digit consistently reduces by 1 for each increase in $n$, of
+course it does, the equation has a $-n$ afterall. The finger trick encodes this
+logic, by chosing the $n+1$th finger, you reduce the number of fingers after it
+by 1.
+
+The finger trick is just a quick way to compute $10n-n$ for $n<9$. Cheeky isn't
+it!
+
+# Line Multiplication
+
+This one is kinda fun because it lets you solve complex multiplications more
+visually. Consider $23 \times 13$:
+
+![line_multiplication](https://rumorscity.com/wp-content/uploads/2014/11/Useful-Math-Hacks-That-You-Didnt-Learn-In-School-08.png)
+
+This is apparently a trick that they teach is japan, although i read that
+online so who knows if that's remotely true. Once again the trick here is
+breaking the problem down into single digit operators and using the visual
+representation to handle the 100s, 10s and 1s.
+
+$$
+\begin{aligned}
+&23 \times 13\\\
+&=(20+3) \times (10 + 3)\\\
+&=20*30 + 20*3 + 3*10 + 3*3\\\
+&=(2*10)(3*10) + 20*3 + 3*10 + 3*3\\\
+&=100(2*3) + 10(2*3) + 10(3) + 3*3\\\
+&=100(2*3) + 10(2*3 + 3) + 3*3\\\
+\end{aligned}
+$$
+
+Generalising for any two numbers, each 2 digits:
+
+$$
+\begin{aligned}
+&10a+b \times 10c+d\\\
+&100ac + 10ad + 10bc + bd\\\
+&=100ac + 10(ad) + bd
+\end{aligned}
+$$
+
+The line method just encodes this formula in a easier to remember way. You might
+feel like this is familar and if you were taught the
+[FOIL method](https://en.wikipedia.org/wiki/FOIL_method) it very much is!
+
+# Conclusion
+
+I dunno i thought this was interesting. Bye!

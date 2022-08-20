@@ -70,3 +70,6 @@ article thead tr {
 article table tbody tr:first-of-type td {
 	padding-top: 1rem;
 }
+img {
+	width: 100%;
+}

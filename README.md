@@ -14,8 +14,7 @@ Based off astro.
   - [x] Get floating to dissapear near bottom of screen.
   - [x] Get built in nav options at bottom above footer.
   - [x] Get all buttons to work.
-- [ ] Set up social image.
+- [x] Set up social image.
 - [ ] Show read articles.
-- [ ] Link to blog on twitter + website.
 - [ ] light / dark.
 - [ ] Show article read time.

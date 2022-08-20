@@ -9,17 +9,18 @@ export interface Props {
 		description: string;
 		pubDate?: string;
 		tags?: string[];
+		social?: string;
 	};
 }
 
 const {
-	content: { title, description, pubDate, tags },
+	content: { title, description, pubDate, tags, social },
 } = Astro.props as Props;
 ---
 
 <html>
 	<head>
-		<BaseHead title={title} description={description} />
+		<BaseHead title={title} description={description} image={social} />
 		<style>
 			body {
 				background: var(--bg-color);
