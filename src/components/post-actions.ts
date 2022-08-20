@@ -43,6 +43,12 @@ export class PostActions extends LitElement {
       .in-place button:hover {
         background: rgba(0, 0, 0, 0.08);
       }
+      @media only screen and (max-width: 768px) {
+        .in-place button {
+          font-size: 0.7rem;
+          padding: 0.4rem 1.8rem;
+        }
+      }
       :host([data-hidden]) .floating {
         transform: translateY(calc(110% + 8px));
         opacity: 0;
