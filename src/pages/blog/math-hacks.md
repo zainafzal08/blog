@@ -16,8 +16,8 @@ TLDR: It's basically when someone shows you a semi involved operation
 and then shows some magic hack where you can fiddle with the numbers to arrive
 at the right solution via a simplier method. For example this [pinterest link](https://www.pinterest.com.au/pin/645422190363791447/?mt=login) shows a hack for multiplying $55$ by any single
 digit number $n$, the output turns out is always $5 \times n$ with the digits in
-the results added in and put in the middle. I.e. $5 \times 6$ is $45$ and then
-you stick $9$ in the middle to get $495$.
+the results added in and put in the middle. I.e. To compute $55 \times 9$ we do
+$5 \times 9$ which is $45$ and then you stick $9$ in the middle to get $495$.
 
 It works! Huzzah now if you ever need to specifically multiply 55 by a number you
 can. Now if your a normal person with a life and friends you go "huh neat" and
@@ -91,8 +91,8 @@ $55 \times n = 100a + 10(a+b) + b$ where $5n=10a+b$
 
 Is unlikely to make anyone go "woah! how easy!" but $5n$ is a easy computation
 and finding $a$ and $b$ are trivial for 2 digit numbers, you just take the
-first and second digit as $a$ and $b$. You can explain $100a + 10(a+b) + b$ very
-easily as taking $a$ and $b$, adding them and sticking it in the
+first and second digit as $a$ and $b$. You can explain $100a + 10(a+b) + b$
+as taking $a$ and $b$, adding them and sticking it in the
 middle of thw two. Visually it seems like we are just moving numbers around but
 when we put 3 single digits next to each other as $123$ we are actually just
 very quickly computing $100*1+10*2+3$. This is the exact same reasoning.
@@ -156,7 +156,7 @@ about it this way you can quickly adjust the hack to up the number of hundreds
 by 1 and you get to $528$.
 
 I find this view of the hack to actually be a lot better then the approach a lot
-of videos take where they just show you moving numbers around, a slightly deeper
+of videos take where they just show you numbers moving around, a slightly deeper
 understanding means you can use these hacks in more situations without getting
 confused.
 
@@ -188,11 +188,11 @@ property of always consisting of 2 digits that add up to $9$:
 
 If you know $9(n-1)$ you can get $9n$ pretty quickly by adding one to the first
 digit and subtracting 1 from the second. How come? Well once again lets think
-about this in terms of `10s` and `1s`.
+about this in terms of 10s and 1s.
 
 $9n$ can be written as $10n-1n$, that is to say that the number of 10s in the
 output of $9n$ will always be $n-1$ as we would compute $10n$ then subtract 1 or
-more from it, bumping it down. This immediately gives the rationale for why
+more from it, bumping it down. This immediately gives us the rationale for why
 picking your nth finger and looking at the number of fingers before it gives
 us the first digit of our answer. We're just doing $n-1$.
 
