@@ -39,9 +39,10 @@ export class PostActions extends LitElement {
         font-size: 1rem;
         color: var(--text-primary);
         cursor: pointer;
+        background: none;
       }
       .in-place button:hover {
-        background: rgba(0, 0, 0, 0.08);
+        background: var(--button-hover);
       }
       @media only screen and (max-width: 768px) {
         .in-place button {
