@@ -28,7 +28,7 @@ A loud proclamation of "at least once".
 
 And suddenly you may find<br>
 That something is refilled.<br>
-Indescribable, immeasurable<br>
+Indescribable, unmeasurable<br>
 infinite somedays and scarce others
 
 Whatever it is. It feels good<br>
