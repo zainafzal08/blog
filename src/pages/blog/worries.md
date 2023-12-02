@@ -28,8 +28,8 @@ A loud proclamation of "at least once".
 
 And suddenly you may find<br>
 That something is refilled.<br>
-Indescribable, unmeasurable<br>
-Infine somedays and scarce others
+Indescribable, immeasurable<br>
+infinite somedays and scarce others
 
 Whatever it is. It feels good<br>
 And I could use a little more
